@@ -62,7 +62,7 @@ class DocumentRFClassifierApproach(override val uid: String)
 
   override def train(dataset: Dataset[_], recursivePipeline: Option[PipelineModel]): DocumentRFClassifierModel = {
 
-    val (labels, preparedDataset) = prepareData(dataset)
+    val (labels: Array[String], preparedDataset: Dataset[_]) = prepareData(dataset)
 
     val Array(trainData: Dataset[_], testData: Dataset[_]) = preparedDataset.randomSplit(Array(0.7, 0.3), $(seed))
     // TODO: use testData to return metrics
